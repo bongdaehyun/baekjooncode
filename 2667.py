@@ -3,6 +3,7 @@ n=int(input())
 for i in range(n):
     maps.append([int(j) for j in input()])
 visit=[[False]*n for _ in range(n)]
+print(maps)
 d=[]
 dx = [0, 0, 1, -1]
 dy = [1, -1, 0, 0]

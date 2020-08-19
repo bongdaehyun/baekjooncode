@@ -9,7 +9,7 @@ d=[[0 for col in range(b)] for row in range(a)]
 visit=[[False]*b for _ in range(a)]
 #미로
 miro=[list(map(int,input())) for _ in range(a)]
-
+print(miro)
 # 0,0 시작
 q.append((0,0))
 visit[0][0]=True
