@@ -1,6 +1,6 @@
 import sys
 n=int(sys.stdin.readline())
-#소수 구하기
+#소수 구하기 0,1은 False로 체크
 a = [False,False] + [True]*(n-1)
 primes=[]
 
