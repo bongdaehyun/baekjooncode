@@ -13,11 +13,12 @@ while True:
 
     #토너먼트 경기수
     t = A * G + D
+    n=len(bin(t)[2:])
     # 2의 제곱꼴이면?
-    if bin(t)[2:].count('1') ==1:
+    if 2**(n-1) ==t:
         X+=(t-1)
     else: #2의 제곱꼴이아니면 가까운것
-        Y=(2**(len(bin(t)[2:])))-t
-        X+=(2**(len(bin(t)[2:]))-1)
+        Y=(2**(n))-t
+        X+=(2**(n)-1)
     X+=groups
     print(f'{G}*{A}/{T}+{D}={X}+{Y}')
