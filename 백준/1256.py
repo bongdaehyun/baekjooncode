@@ -1,5 +1,5 @@
 import sys
-
+#어렵네?..
 n,m,k=map(int,sys.stdin.readline().split())
 start='a'*n+'z'*m
 
