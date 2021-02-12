@@ -49,8 +49,9 @@ Issel=[False]*len(rotates)
 picks=[]
 def permutation(cnt):
     global mins
-    if cnt==len(rotates):# 회전연산 계산
-        ary = copy.deepcopy(maps) #deepcopy는 시간이오래걸린다.
+    if cnt==k:# 회전연산 계산
+        #ary = copy.deepcopy(maps) #deepcopy는 시간이오래걸린다.
+        ary=[row[:] for row in maps]
         for p in picks:
             r,c,s=p
             ary=spin(r,c,s,ary)
@@ -58,15 +59,15 @@ def permutation(cnt):
         for i in range(n):
             mins=min(mins,sum(ary[i]))
         return
-    for i in range(len(rotates)):
+    for i in range(k):
         if Issel[i]: continue
         Issel[i]=True
         picks.append(rotates[i])
-        permutaion(cnt+1)
+        permutation(cnt+1)
         Issel[i]=False
         picks.pop()
 
-permutaion(0)
+permutation(0)
 print(mins)
 
 
