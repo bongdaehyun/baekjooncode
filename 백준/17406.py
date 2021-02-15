@@ -37,7 +37,24 @@ def spin(r,c,s,ary):
         ex-=1
         ey-=1
     return ary
+"""
+def rotate(m, d):
+    for n in m:
+        r,c,s = n
+        r, c = r-1, c-1
 
+        for i in range(1, s+1): # 0부터 s까지, 가장 안에서부터 시작한다.
+            temp = d[r-i][c-i]
+            for x in range(c-i, c+i): # 오른쪽
+                temp, d[r-i][x+1] = d[r-i][x+1], temp
+            for y in range(r-i, r+i): # 아래
+                temp, d[y + 1][c + i] = d[y + 1][c + i], temp
+            for x in range(c+i, c-i, -1): # 왼쪽
+                temp, d[r + i][x - 1] = d[r + i][x - 1], temp
+            for y in range(r+i, r-i, -1): # 위
+                temp, d[y - 1][c - i] = d[y - 1][c - i], temp
+    return d
+"""
 # 회전 연산 저장
 mins=sys.maxsize
 rotates=[]
@@ -66,7 +83,10 @@ def permutation(cnt):
         permutation(cnt+1)
         Issel[i]=False
         picks.pop()
-
+"""
+# 순서있는 조합 == 순열을 구한다.
+candidates = list(itertools.permutations(data, K))
+"""
 permutation(0)
 print(mins)
 
