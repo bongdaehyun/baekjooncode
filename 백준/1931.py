@@ -1,16 +1,17 @@
-times=[]
-for _ in range(int(input())):
-    a,b=map(int,input().split())
-    times.append((a,b))
+import sys
+n=int(sys.stdin.readline())
 
-times=sorted(times,key=lambda x: x[0])
-times=sorted(times,key=lambda x: x[1])
+ary=[]
+for i in range(n):
+    ary.append(list(map(int,sys.stdin.readline().split())))
 
+ary=sorted(ary,key=lambda x:(x[1],x[0]))
+#print(ary)
+temp=ary[0]
 count=1
-end=times[0][1]
-for i in range(1,len(times)):
-    if end <= times[i][0]:
-        end=times[i][1]
+for i in range(1,len(ary)):
+    if temp[1]<=ary[i][0]:
         count+=1
-
+        temp=ary[i]
+        #print(ary[i])
 print(count)
