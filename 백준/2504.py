@@ -1,6 +1,6 @@
 import sys
 
-def check():
+def check(): #올바른 괄호가 되는 지 판단
     stack = []
     for c in gwalho:
         if c == '(' or c == '[':
@@ -13,22 +13,22 @@ def check():
             else:
                 stack.append(c)
 
-    if stack:
+    if stack: #스택 안에 남아있으면 바람직하지 않은 괄호
         return False
-    else:
+    else: # 스택이 비어있으면 알맞은 괄호
         return True
 
 
-def cal():
+def cal(): #알맞은 괄호 시 괄호 계산
     stack = []
     for c in gwalho:
-        if c == '(' or c == '[':
+        if c == '(' or c == '[': #열린 괄호시 스택에 저장
             stack.append(c)
         else:
-            if c == ')':
-                if stack[-1] == '(':
+            if c == ')': #닫힌 괄호를 만날때
+                if stack[-1] == '(': #열린 괄호가 있다면 숫자 2저장
                     stack[-1] = 2
-                else:
+                else: #숫자를 만난다면 안쪽 괄호 계산
                     temp = 0
                     while stack:
                         if stack[-1] == '(':
@@ -50,7 +50,7 @@ def cal():
     return sum(stack)
 
 
-gwalho = [i for i in sys.stdin.readline().rstrip()]
+gwalho = [i for i in sys.stdin.readline().rstrip()] #괄호 입력
 if check():
     print(cal())
 else:
