@@ -5,29 +5,37 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main_bj_14501_퇴사 {
+	static int ans = 0;
 
-	public static void main(String[] args) throws Exception{
-		BufferedReader in=new BufferedReader(new InputStreamReader(System.in));
-		int n=Integer.parseInt(in.readLine());//최대 15
-		
-		int dp[]=new int[n+6];//상담일수가 5일이 최대이므로 넉넉 
-		int time[]=new int[n+6];
-		int day[]=new int[n+6];
-		int max=Integer.MIN_VALUE;//최대수입
-		for(int i=1;i<=n;i++) {//1일부터 
-			StringTokenizer st=new StringTokenizer(in.readLine());
-			time[i]=Integer.parseInt(st.nextToken());
-			day[i]=Integer.parseInt(st.nextToken());
+	public static void main(String[] args) throws Exception {
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		int n = Integer.parseInt(in.readLine());// 최대 15
+
+		int time[] = new int[n];
+		int money[] = new int[n];
+
+		for (int i = 0; i < n; i++) {// 1일부터
+			StringTokenizer st = new StringTokenizer(in.readLine());
+			time[i] = Integer.parseInt(st.nextToken());
+			money[i] = Integer.parseInt(st.nextToken());
 		}
 
-		for(int i=1;i<=n+1;i++) {//1일~n일까지
-			dp[i]=Math.max(max,dp[i]);//최대수입과 비교
-			//움직이면서 얻은 최대수익과 이전에 움직이는 것에 대한 비교
-			dp[time[i]+i]=Math.max(dp[time[i]+i],dp[i]+day[i] );
-			max=Math.max(max, dp[i]);
-		}
-		System.out.println(max);
+		dfs(0, 0,time,money,n);
+		System.out.println(ans);
 		in.close();
 	}
 
+	static void dfs(int cnt, int value, int[] time, int[] money, int n) {
+		if (cnt >= n) {//n일이 넘으면 끝
+			ans=Math.max(ans, value);
+			return;
+		}
+		
+		if(cnt+time[cnt]<=n) {
+			dfs(cnt+time[cnt],value+money[cnt],time,money,n);
+		}else {//날짜를 초과
+			dfs(cnt+time[cnt],value,time,money,n);
+		}
+		dfs(cnt+1,value,time,money,n);
+	}
 }
