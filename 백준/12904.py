@@ -1,24 +1,14 @@
-import sys
-from _collections import deque
-#t 의 문자에서 s로 만들기
-#t의 문자열의 끝이 A이면 A제거 B이면 B제거 후 역순
+def sum_hw(*arg):
 
-s=sys.stdin.readline().rstrip()
-t=[i for i in sys.stdin.readline().rstrip()]
+    sumv=0 #int 정수
+    for i in arg:# i =리스트
+       sumv+=i
+    for i in range(1,200):
+        if i%2==1:
+            sumv+=i
+    lists=list(*arg)
+    print(lists)
+    return sumv
 
-while True:
-    if len(s)==len(t):
-        break
-    if t[-1]=='A':
-        t.pop()
-    elif t[-1]=='B':
-        t.pop()
-        t.reverse()
-
-result=""
-for i in t:
-    result+=i
-if result==s:
-    print(1)
-else:
-    print(0)
+result=sum_hw(*[1,2,3])
+print(result)
