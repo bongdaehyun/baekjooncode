@@ -9,10 +9,14 @@ for i in range(len(s)):
     if len(stack) >= len(bumb_s):
         check = True
         for j in range(len(bumb_s)):
-            if stack[len(stack)-2-j] != bumb_s[j]:
+
+            if stack[len(stack)-1-j] != bumb_s[len(bumb_s)-1-j]:
                 check = False
                 break
         if check:
             for j in range(len(bumb_s)):
                 stack.pop()
-    print(stack)
+if stack:
+    print("".join(stack))
+else:
+    print("FRULA")
